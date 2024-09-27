@@ -1,0 +1,21 @@
+:root {
+    --background-image: linear-gradient(to bottom right, #87CEEB, #00BFFF, #1E90FF, #4682B4, #4169E1);
+    --calbtn: linear-gradient(to bottom right, #87CEEB, #00BFFF, #1E90FF, #4682B4, #4169E1);
+    --bordercolor:rgb(21, 0, 255);  
+}
+
+[data-theme='blue'] {
+
+    --background-image: linear-gradient(to bottom right, #87CEEB, #00BFFF, #1E90FF, #4682B4, #4169E1);
+    --calbtn: linear-gradient(to bottom right, #87CEEB, #00BFFF, #1E90FF, #4682B4, #4169E1);
+    --bordercolor:rgb(21, 0, 255);
+  
+}
+
+[data-theme='pink'] {
+    --background-image: linear-gradient(to bottom right, #FFB6C1, #FF69B4, #DA70D6, #BA55D3, #9370DB);
+    --calbtn: linear-gradient(to bottom right, #FF00FF, #FF1493, #9c3f6e, #8A2BE2, #3d0556);
+
+
+    --bordercolor:rgb(240, 6, 205);
+}
