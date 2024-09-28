@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
 import coverMale from './assets/cover.png';
-import coverFemale from './assets/cover2.png';
+import coverFemale from './assets/cover4.png';
 
 
 
@@ -146,8 +146,8 @@ function App() {
 
                   <Box sx={{ m: 3 }} />
                   <div className="d-flex justify-content-between">
-                    <Typography gutterBottom>Weight(kg)</Typography>
-                    <p className='fw-bold'>Your Weight : {wvalue}</p>
+                    <Typography gutterBottom className='text-white'>Weight(kg)</Typography>
+                    <p className='fw-bold text-white'>Your Weight : {wvalue} kg</p>
                   </div>
 
                   <PrettoSlider
@@ -163,8 +163,8 @@ function App() {
 
                   <Box sx={{ m: 3 }} />
                   <div className="d-flex justify-content-between">
-                    <Typography gutterBottom>Height(cm)</Typography>
-                    <p className='fw-bold'>Your Height : {hvalue}</p>
+                    <Typography gutterBottom className='text-white'>Height(cm)</Typography>
+                    <p className='fw-bold text-white'>Your Height : {hvalue} cm</p>
                   </div>
                   <PrettoSlider
                     valueLabelDisplay="auto"
@@ -174,34 +174,38 @@ function App() {
                     max={300}
                     onChange={handlehValue}
                   />
-
-
-
                   <Button variant="outlined" className='  text-white  fw-bolder mt-5 calbtn' onClick={calculate} style={{ fontSize: '20px' }}>CALCULATE BMI</Button>
                 </Col>
 
-                <Col md={6}>
+                <Col md={6} className='d-none  d-md-inline'>
                   <div className="position-relative" >
                     <img src={imageUrl} alt="" width="100%" height="630px" className='position-relative' style={{ zIndex: 2 }} />
                     <div
                       className="bgrect  position-absolute"
-                      style={{ top: 0, left: '30%', height: '620px', zIndex: 1, width: '40%' }}
+                      style={{ top: 0, left: '30%', height: '628px', zIndex: 1, width: '40%' }}
                     ></div>
                   </div>
                 </Col>
               </Row>
             </Col>
-            <div className='footerbg w-100 position-absolute px-5' style={{ height: '200px', top: '80%', left: 0, zIndex: 0 }}>
+            <div className='footerbg w-100 position-absolute px-md-5 px-3' style={{ height: 'auto', top: '80%', left: 0, zIndex: 0 }}>
               {showbmi && (
-                <Container className='px-5 py-3 '>
-                  <div className="d-flex ">
-                    <p className='fs-5 fw-lightm' style={{ color: 'black' }}>YOUR BMI Score
-                      <br />
-                      <span className=' fw-bold ' style={{ fontSize: '70px', color: 'var(--bordercolor)' }}>{bmi}</span>
-                    </p>
-                    <i>  <p className='px-5  fs-5 font fw-semibold' style={{ color: "black" }}>Healthy weight range <br /> for your height: <br /><span className='fw-bold fs-3' style={{ color: 'var(--bordercolor)' }}> {healthrange.min}kg - {healthrange.max}kg</span> </p></i>
+                <Container className='px-md-5  px-0 py-md-3 '>
+                  <Row className='text-center'>
+                    <Col md={2} className='text-center'>
+                      <div className="px-md-0 px-5 mt-md-0 mt-3 ">
+                        <p className='fs-5 text-dark ' >YOUR BMI Score
+                          <br />
+                          <span className='fw-bold  bmiscore text-white'>{bmi}</span>
+                        </p>
+                      </div>
 
-                  </div>
+
+
+                    </Col>
+                    <Col md={4}>
+                      <i>  <p className='px-5 py-1 fs-5   font fw-semibold text-dark' >Healthy weight range <br /> for your height: <br /><span className='fw-bold fs-3 text-white' > {healthrange.min}kg - {healthrange.max}kg</span> </p></i></Col>
+                  </Row>
 
                 </Container>
               )}

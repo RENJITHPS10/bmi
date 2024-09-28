@@ -1,21 +1,44 @@
 :root {
     --background-image: linear-gradient(to bottom right, #87CEEB, #00BFFF, #1E90FF, #4682B4, #4169E1);
     --calbtn: linear-gradient(to bottom right, #87CEEB, #00BFFF, #1E90FF, #4682B4, #4169E1);
-    --bordercolor:rgb(21, 0, 255);  
+    --bordercolor: rgb(21, 0, 255);
+    --outputcr: linear-gradient(to bottom,
+            #0d2c46,
+            #123551,
+            #1b4d7a,
+            #0e2f3c,
+            #000000);
 }
 
 [data-theme='blue'] {
 
     --background-image: linear-gradient(to bottom right, #87CEEB, #00BFFF, #1E90FF, #4682B4, #4169E1);
     --calbtn: linear-gradient(to bottom right, #87CEEB, #00BFFF, #1E90FF, #4682B4, #4169E1);
-    --bordercolor:rgb(21, 0, 255);
-  
+    --bordercolor: rgb(21, 0, 255);
+    --bmicolor: rgb(255, 255, 255);
+    --outputcr: linear-gradient(to bottom,
+            #0d2c46,
+            #123551,
+            #1b4d7a,
+            #0e2f3c,
+            #055e81);
+
 }
 
 [data-theme='pink'] {
     --background-image: linear-gradient(to bottom right, #FFB6C1, #FF69B4, #DA70D6, #BA55D3, #9370DB);
     --calbtn: linear-gradient(to bottom right, #FF00FF, #FF1493, #9c3f6e, #8A2BE2, #3d0556);
-
-
-    --bordercolor:rgb(240, 6, 205);
+    --bordercolor: rgb(240, 6, 205);
+    --outputcr: linear-gradient(to bottom,
+            #2e004f,
+            /* Dark Purple */
+            #4b0082,
+            /* Indigo */
+            #6a0dad,
+            /* Amethyst */
+            #8b3ab0,
+            /* Purple Plum */
+            #000000
+            /* Lavender Blush */
+        );
 }
