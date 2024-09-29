@@ -6,7 +6,7 @@ function Header() {
         <>
             <Navbar>
                 <Container fluid >
-                    <Navbar.Brand href="#home" className='text-white d-flex align-items-center'>
+                    <Navbar.Brand href="" className='text-white d-flex align-items-center'>
                         <img
                             alt=""
                             src={logo}
