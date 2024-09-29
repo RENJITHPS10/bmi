@@ -1,4 +1,4 @@
-import { Container, Navbar, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import './App.css'
 import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,8 +11,10 @@ import Typography from '@mui/material/Typography';
 
 import Box from '@mui/material/Box';
 import { useState } from 'react';
-import coverMale from './assets/cover.png';
-import coverFemale from './assets/cover4.png';
+
+import Header from './components/Header';
+import Cover from './components/Cover';
+
 
 
 
@@ -68,7 +70,7 @@ function App() {
   const [hvalue, sethValue] = useState(100)
   const [bmi, setbmi] = useState(null)
   const [sgender, setgender] = useState('male')
-  const [healthrange, sethealthrange] = useState({ min: '', max: '' })
+  const [healthrange, sethealthrange] = useState({ min: null, max: null })
   const [showbmi, setshowbmi] = useState(false)
 
   //handle weight value
@@ -85,9 +87,10 @@ function App() {
     const bmi = wvalue / (height * height)
     setbmi(bmi.toFixed(2))
     const minWeight = (18.5 * height * height).toFixed(2)
-    const maxweight = (24.9 * height * height).toFixed(2)
-    sethealthrange({ min: minWeight, max: maxweight })
+    const maxWeight = (24.9 * height * height).toFixed(2)
+    sethealthrange({ min: minWeight, max: maxWeight })
     setshowbmi(true)
+    console.log(bmi, showbmi, healthrange);
   }
   //for switching colr based on gender
   const switchtheme = (gender) => {
@@ -101,27 +104,10 @@ function App() {
     }
     setshowbmi(false)
   }
-  //change image based on gender
-  const imageUrl = sgender === 'male' ? coverMale : coverFemale
-
   return (
     <>
       <div>
-        <Navbar>
-          <Container fluid >
-            <Navbar.Brand href="#home" className='text-white d-flex align-items-center'>
-              <img
-                alt=""
-                src="/src/assets/logo1.png"
-                width="100"
-                height="100"
-                className="d-inline-block align-top "
-              />
-              <h3 className='nill'>𝓕𝓲𝓽𝓷𝓮𝓼𝓼</h3>
-            </Navbar.Brand>
-
-          </Container>
-        </Navbar>
+        <Header />
         <Container fluid className=''>
           <Row>
             <Col md={1}></Col>
@@ -129,27 +115,21 @@ function App() {
               <Row>
                 <Col md={6} className='p-4'>
                   <Button variant="outlined" className='border-2 radius-0   text-white fs-5 fw-bolder  me-3 ' onClick={() => switchtheme('male')} style={{ backgroundColor: sgender === 'male' ? '#2196F3' : '#202020' }}><FontAwesomeIcon icon={faMars} className='me-2' />MALE</Button>
-
                   <Button
                     variant="outlined"
                     className='border-2 text-white fs-5 fw-bolder'
                     onClick={() => switchtheme('female')}
                     style={{
                       backgroundColor: sgender === 'female' ? '#f711d1' : '#202020', borderColor: "purple"
-
                     }}
                   >
                     <FontAwesomeIcon icon={faVenus} className='me-2' />FEMALE
                   </Button>
-
-
-
                   <Box sx={{ m: 3 }} />
                   <div className="d-flex justify-content-between">
                     <Typography gutterBottom className='text-white'>Weight(kg)</Typography>
                     <p className='fw-bold text-white'>Your Weight : {wvalue} kg</p>
                   </div>
-
                   <PrettoSlider
                     valueLabelDisplay="auto"
                     aria-label="pretto slider"
@@ -158,9 +138,6 @@ function App() {
                     min={1}
                     max={200}
                   />
-
-
-
                   <Box sx={{ m: 3 }} />
                   <div className="d-flex justify-content-between">
                     <Typography gutterBottom className='text-white'>Height(cm)</Typography>
@@ -176,15 +153,8 @@ function App() {
                   />
                   <Button variant="outlined" className='  text-white  fw-bolder mt-5 calbtn' onClick={calculate} style={{ fontSize: '20px' }}>CALCULATE BMI</Button>
                 </Col>
-
                 <Col md={6} className='d-none  d-md-inline'>
-                  <div className="position-relative" >
-                    <img src={imageUrl} alt="" width="100%" height="630px" className='position-relative' style={{ zIndex: 2 }} />
-                    <div
-                      className="bgrect  position-absolute"
-                      style={{ top: 0, left: '30%', height: '628px', zIndex: 1, width: '40%' }}
-                    ></div>
-                  </div>
+                  <Cover gender={sgender} />
                 </Col>
               </Row>
             </Col>
@@ -199,22 +169,16 @@ function App() {
                           <span className='fw-bold  bmiscore text-white'>{bmi}</span>
                         </p>
                       </div>
-
-
-
                     </Col>
-                    <Col md={4}>
+                    <Col md={5}>
                       <i>  <p className='px-5 py-1 fs-5   font fw-semibold text-dark' >Healthy weight range <br /> for your height: <br /><span className='fw-bold fs-3 text-white' > {healthrange.min}kg - {healthrange.max}kg</span> </p></i></Col>
                   </Row>
-
                 </Container>
               )}
             </div>
           </Row>
         </Container>
-
       </div>
-
     </>
   )
 }
